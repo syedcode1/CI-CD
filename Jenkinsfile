@@ -19,21 +19,21 @@ sh 'docker pull tenableio-docker-consec-local.jfrog.io/cs-scanner:latest'
 sh '#Push the image to on-prem Container Security scanner'
 sh 'retval=1'
 sh 'count=0'
-sh 'while [ $retval -ne 0 ]; do'
+sh 'while [ $retval -ne 0 ]; do \
 
-sh 'docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
+ docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
 -e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME=$REPO \
--i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER'
+-i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER \
 
-sh 'retval=$?'
-sh 'if [ $retval -ne 0 ]; then '
-sh 'echo "Error analyzing image. Will retry in a while." '
-sh 'sleep 30'
-sh 'let count=count+1'
-sh 'else'
-sh 'echo "Pushed $IMAGE:$BUILD_NUMBER to Tenable CS on-prem scanner at" `date`'
-sh 'fi'
-sh 'done'
+retval=$?  \
+if [ $retval -ne 0 ]; then \
+echo "Error analyzing image. Will retry in a while." \
+sleep 30 \
+let count=count+1 \
+else \
+echo "Pushed $IMAGE:$BUILD_NUMBER to Tenable CS on-prem scanner at" `date` \
+fi \
+done \ '
 
 sh 'echo "Checking for assessment results" '
 sh 'while [ 1 -eq 1 ]; do'
