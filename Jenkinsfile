@@ -10,7 +10,7 @@ pipeline {
             steps {
 sh '#Defines images to be downloaded from Docker hub'
 sh 'IMAGE="hello-world-python"'
-sh '"hello-world-python-onprem"'
+sh 'REPO="hello-world-python-onprem"'
 
 sh ' #Get the latest CS scanner '
 sh 'docker login -u pubread -p BXaXRD9n3uEWKkGgt56eHVD5h tenableio-docker-consec-local.jfrog.io'
