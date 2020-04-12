@@ -1,9 +1,9 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                echo 'success'
+               sh 'docker build ./ -t hello-world-python:$BUILD_NUMBER'
             }
         }
     }
