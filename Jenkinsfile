@@ -20,8 +20,8 @@ sh '#Push the image to on-prem Container Security scanner'
 sh 'retval=1'
 sh 'count=0'
 sh 'while [ $retval -ne 0 ]; do \
- docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
--e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME=$REPO \
+ docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=212b4c0ab8e464bbd39812be2e7eaa3a89bf61f73768d32674311ba6a2400fed \
+-e TENABLE_SECRET_KEY=8c465e8fc76bf0a6fccdea13755afa8aa7e6889e661422b3dfa62e4df75a0a93-e IMPORT_REPO_NAME=$REPO \
 -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER \
 retval=$?  \
 if [ $retval -ne 0 ]; then \
