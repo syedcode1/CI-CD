@@ -21,7 +21,9 @@ sh 'retval=1'
 sh 'count=0'
 sh 'while [ $retval -ne 0 ]; do'
 
-sh ' docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \ -e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME=$REPO \ -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER '
+sh 'docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
+-e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME=$REPO \
+-i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER'
 
 sh 'retval=$?'
 sh 'if [ $retval -ne 0 ]; then '
