@@ -1,2 +1,2 @@
 FROM python:3-alpine
-CMD [ "python", "-c", "print('Hello 6')" ]
+CMD [ "python", "-c", "print('Hello 7')" ]
