@@ -8,15 +8,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-#Defines images to be downloaded from Docker hub
+sh '#Defines images to be downloaded from Docker hub'
 sh 'IMAGE="hello-world-python"'
 sh '"hello-world-python-onprem"'
 
-#Get the latest CS scanner
+sh ' #Get the latest CS scanner '
 sh 'docker login -u pubread -p BXaXRD9n3uEWKkGgt56eHVD5h tenableio-docker-consec-local.jfrog.io'
 sh 'docker pull tenableio-docker-consec-local.jfrog.io/cs-scanner:latest'
 
-#Push the image to on-prem Container Security scanner
+sh '#Push the image to on-prem Container Security scanner'
 sh 'retval=1'
 sh 'count=0'
 sh 'while [ $retval -ne 0 ]; do'
