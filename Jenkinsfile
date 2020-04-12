@@ -6,7 +6,7 @@ pipeline {
                 sh 'docker build ./ -t hello-world-python:$BUILD_NUMBER'
                   }
         }
-        stage('Build') {
+        stage('Test') {
             steps {
 sh '#Defines images to be downloaded from Docker hub'
 sh 'IMAGE="hello-world-python"'
