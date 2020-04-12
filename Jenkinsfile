@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script{
-                    docker build ./ -t hello-world-python:$BUILD_NUMBER}
-              
-            }
+                sh 'docker build ./ -t hello-world-python:$BUILD_NUMBER'
+                  }
         }
     }
 }
