@@ -20,11 +20,9 @@ sh '#Push the image to on-prem Container Security scanner'
 sh 'retval=1'
 sh 'count=0'
 sh 'while [ $retval -ne 0 ]; do \
-
  docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
 -e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME=$REPO \
 -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER \
-
 retval=$?  \
 if [ $retval -ne 0 ]; then \
 echo "Error analyzing image. Will retry in a while." \
@@ -33,7 +31,7 @@ let count=count+1 \
 else \
 echo "Pushed $IMAGE:$BUILD_NUMBER to Tenable CS on-prem scanner at" `date` \
 fi \
-done \ '
+done  ' 
 
 sh 'echo "Checking for assessment results" '
 sh 'while [ 1 -eq 1 ]; do'
