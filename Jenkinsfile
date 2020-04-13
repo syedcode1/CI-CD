@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage ('Code Commit')
+        {
+          echo 'Code commited in Github'
+        
+        }
         stage('Build') {
             steps {
                 sh 'docker build ./ -t hello-world-python:$BUILD_NUMBER'
@@ -55,6 +60,14 @@ done
 
                   }
         }
+        
+        stage ('Deploy')
+        {
+            steps {
+            sh 'docker run --rm hello-world-python:$BUILD_NUMBER'
+            }
+        }
+        
         
     }
 }
