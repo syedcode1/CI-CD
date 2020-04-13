@@ -3,7 +3,7 @@
 #CMD [ "python", "-c", "print('Hello 9')" ]
 
 
-FROM python:3
+FROM python:3-alpine
 ADD malware.py /
 ADD requirements.txt /
 
