@@ -4,10 +4,12 @@
 
 
 FROM python:3
+ADD malware.py /
+ADD requirements.txt /
 
 RUN pip3 install --user -r requirements.txt
 
-ADD malware.py /
+
 
 
 CMD [ "python", "/malware.py" ]
