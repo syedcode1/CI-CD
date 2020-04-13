@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '29099e6c-ee9c-45d3-b717-fdda08a3afac', passwordVariable: 'TENABLE_IO_SECRET_KEY', usernameVariable: 'TENABLE_IO_ACCESS_KEY')]) {
+                withCredentials([usernamePassword(credentialsId: '1379c781-83fb-4957-9c57-589e71f63e0a', passwordVariable: 'TENABLE_IO_SECRET_KEY', usernameVariable: 'TENABLE_IO_ACCESS_KEY')]) {
                 
 sh '#Defines images to be downloaded from Docker hub'
 sh 'IMAGE="hello-world-python"'
