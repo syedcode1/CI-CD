@@ -5,6 +5,6 @@ FROM python:3-alpine
 
 ADD malware.py /
 
-RUN pip install pystrich
+#RUN pip install pystrich
 
 CMD [ "python", "./malware.py" ]
