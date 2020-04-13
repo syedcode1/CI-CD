@@ -42,7 +42,7 @@ echo "Checking for assessment results"
 while [ 1 -eq 1 ]; do
 RESP=`curl -s --request GET --url "https://cloud.tenable.com/container-security/api/v1/compliancebyname?image=$IMAGE&repo=$REPO&tag=$BUILD_NUMBER" \
 --header 'accept: application/json' --header "x-apikeys: accessKey=212b4c0ab8e464bbd39812be2e7eaa3a89bf61f73768d32674311ba6a2400fed;secretKey=8c465e8fc76bf0a6fccdea13755afa8aa7e6889e661422b3dfa62e4df75a0a93" \
-| sed -n 's/.*\"status\":\"\([^\"]*\)\".*/\1/p'`
+| sed -n 's/.*\\\"status\\\":\\\"\\\([^\\\"]*\\\)\\\".*/\\\1/p'`
 if [ "x$RESP" = "xpass" ]; then
 echo "Container marked as PASSED by policy rules"
 exit 0
