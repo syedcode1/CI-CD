@@ -11,4 +11,4 @@ os-sys
 pybase64
 os-win
 socket.py
-ssubprocess.run
+subprocess.run
