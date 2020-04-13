@@ -7,7 +7,7 @@ FROM python:3
 
 RUN pip3 install --user -r requirements.txt
 
-ADD bad /
+ADD malware.py /
 
 
-CMD [ "python", "/bad/vulpy.py" ]
+CMD [ "python", "/malware.py" ]
