@@ -20,7 +20,8 @@ sh '#Push the image to on-prem Container Security scanner'
 sh '''retval=1
 count=0
 while [ $retval -ne 0 ]; do 
- docker save $IMAGE:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=212b4c0ab8e464bbd39812be2e7eaa3a89bf61f73768d32674311ba6a2400fed \
+ docker save $IMAGE:$BUILD_NUMBER \
+ docker run -e TENABLE_ACCESS_KEY=212b4c0ab8e464bbd39812be2e7eaa3a89bf61f73768d32674311ba6a2400fed \
 -e TENABLE_SECRET_KEY=8c465e8fc76bf0a6fccdea13755afa8aa7e6889e661422b3dfa62e4df75a0a93 -e IMPORT_REPO_NAME="hello-world-python-onprem" \
 -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image $IMAGE:$BUILD_NUMBER 
 retval=$?  
