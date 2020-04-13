@@ -26,8 +26,8 @@ sh '#Push the image to on-prem Container Security scanner'
 sh '''retval=1
 count=0
 while [ $retval -ne 0 ]; do 
- docker save hello-world-python:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=$TENABLE_IO_ACCESS_KEY \
--e TENABLE_SECRET_KEY=$TENABLE_IO_SECRET_KEY -e IMPORT_REPO_NAME="hello-world-python-onprem" \
+ docker save hello-world-python:$BUILD_NUMBER | docker run -e TENABLE_ACCESS_KEY=${TENABLE_IO_ACCESS_KEY} \
+-e TENABLE_SECRET_KEY=${TENABLE_IO_SECRET_KEY} -e IMPORT_REPO_NAME="hello-world-python-onprem" \
 -i tenableio-docker-consec-local.jfrog.io/cs-scanner:latest inspect-image "hello-world-python":$BUILD_NUMBER 
 retval=$?  
 if [ $retval -ne 0 ]; then 
@@ -44,7 +44,7 @@ fi
 sh 'echo "Checking for assessment results" '
 sh ''' while [ 1 -eq 1 ]; do
 RESP=`curl -s --request GET --url "https://cloud.tenable.com/container-security/api/v1/compliancebyname?image=hello-world-python&repo=hello-world-python-onprem&tag=$BUILD_NUMBER" \
---header 'accept: application/json' --header "x-apikeys: accessKey=$TENABLE_IO_ACCESS_KEY;secretKey=$TENABLE_IO_SECRET_KEY  | sed -n 's/.*\\\"status\\\":\\\"\\([^\\\"]*\\)\\\".*/\\1/p'` 
+--header 'accept: application/json' --header "x-apikeys: accessKey=${TENABLE_IO_ACCESS_KEY};secretKey=${TENABLE_IO_SECRET_KEY}  | sed -n 's/.*\\\"status\\\":\\\"\\([^\\\"]*\\)\\\".*/\\1/p'` 
                
                            
 if [ "x$RESP" = "xpass" ]; then
