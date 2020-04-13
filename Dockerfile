@@ -1,6 +1,6 @@
 #FROM python:3-alpine
 FROM python:2.7.16-alpine3.9
-CMD [ "python", "-c", "print('Hello World 2')" ]
+CMD [ "python", "-c", "print('Hello World 3')" ]
 
 
 #FROM python:3
