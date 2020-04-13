@@ -5,5 +5,9 @@
 
 FROM python:3
 
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir jeIlyfish
+RUN pip3 install --user -r requirements.txt
+
+ADD bad /
+
+
+CMD [ "python", "/bad/vulpy.py" ]
