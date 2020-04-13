@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage ('Commit')
         {
+            steps {
           echo 'Code commited in Github'
-        
+            }
         }
         stage('Build') {
             steps {
