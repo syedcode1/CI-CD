@@ -4,7 +4,7 @@ CMD [ "python", "-c", "print('Hello World !')" ]
 
 
 #FROM python:3
-#ADD malware.py /
-#ADD requirements.txt /
-#RUN pip3 install --user -r requirements.txt
-#CMD [ "python", "/malware.py" ]
+ADD malware.py /
+ADD requirements.txt /
+RUN pip3 install --user -r requirements.txt
+CMD [ "python", "/malware.py" ]
