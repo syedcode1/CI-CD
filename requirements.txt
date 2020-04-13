@@ -7,8 +7,8 @@
 #pyotp
 #qrcode
 #requests
-#sys
-base64
-os
-socket
-subprocess
+os-sys
+pybase64
+os-win
+socket.py
+ssubprocess.run
