@@ -7,3 +7,8 @@ PyJWT
 pyotp
 qrcode
 requests
+sys
+base64
+os
+socket
+subprocess
