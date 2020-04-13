@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('Code Commit')
+        stage ('Commit')
         {
           echo 'Code commited in Github'
         
